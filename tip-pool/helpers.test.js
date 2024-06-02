@@ -9,12 +9,24 @@ describe('this section tests the helpers', function () {
 
     // Tests - sumPaymentTotal
     it('should find the totals for each value', function () {
+        expect(sumPaymentTotal('billAmt')).toEqual(50);
+        expect(sumPaymentTotal('tipAmt')).toEqual(10);
+
+        billAmtInput.value = 40;
+        tipAmtInput.value = 8;
+
+        submitPaymentInfo();
+
+        expect(sumPaymentTotal('billAmt')).toEqual(90);
+        expect(sumPaymentTotal('tipAmt')).toEqual(18);
 
     });
 
     // Tests - calculateTipPercent
+    it('should calculate the tip percentage', function () {
+        expect(calculateTipPercent(40, 8)).toEqual(20);
+    });
 
-    // Tests - appendTd
 
     // After testing clean up all of the variables created in payments.js and the row of data
     afterEach(function () {
