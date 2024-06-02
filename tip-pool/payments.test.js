@@ -15,8 +15,16 @@ describe('this section tests the Payments ', function () {
 
     });
 
+    it('should not create payment with empty input on createCurPayment()', function () {
+        billAmtInput.value = '';
+        tipAmtInput.value = '';
+        let curPayment = createCurPayment();
 
-    //after
+        expect(curPayment).toEqual(undefined);
+    });
+
+
+    //after testing clean up all of the variables created in payments.js
     afterEach(function () {
         billAmtInput.value = '';
         tipAmtInput.value = '';

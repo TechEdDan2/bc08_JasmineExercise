@@ -24,3 +24,26 @@ function appendTd(tr, value) {
 
   tr.append(newTd);
 }
+
+// Creates a delete button and add an event handler
+function addDeleteBtn(tr, type) {
+  let newTd = document.createElement('td');
+  newTd.className = 'deleteBtn';
+  newTd.innerText = 'Delete';
+
+  newTd.addEventListener('click', function (e) {
+    let itemToRemove = e.target.closest('tr');
+
+    delete allServers[itemToRemove.id];
+
+    itemToRemove.parentNode.removeChild(itemToRemove);
+
+    updateServerTable();
+
+  });
+
+  tr.append(newTd);
+
+  // newTd.addEventListener('click', removeBtn)
+  tr.append(newTd);
+}
